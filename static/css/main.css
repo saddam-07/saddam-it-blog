@@ -1,0 +1,222 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Стили для хедера */
+header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Hero Area */
+.hero-area {
+    display: flex;
+    flex-direction: column; /* Изменение направления для мобильных устройств */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #03001d, #1100ff);
+    border-radius: 10px;
+}
+
+.hero-text {
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.hero-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Перенос иконок на следующую строку при необходимости */
+    gap: 10px; /* Пробел между иконками */
+}
+
+.social-icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+/* Задание иконок социальных сетей */
+.instagram {
+    background-image: url('../my_site1/image/instagram-icon.png');
+}
+
+.facebook {
+    background-image: url('../my_site1/image/facebook-icon.png');
+}
+
+.telegram {
+    background-image: url('../my_site1/image/telegram-icon.png');
+}
+
+.whatsapp {
+    background-image: url('../my_site1/image/whatsapp-icon.png');
+}
+
+.recent-posts-heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center; /* Выравнивание заголовка по центру */
+}
+
+.post-box {
+    background: linear-gradient(135deg, rgb(255, 0, 0), #02008a);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column; /* Изменение направления для мобильных устройств */
+    padding: 10px;
+    transition: transform 0.4s;
+}
+
+.post-box:hover {
+    transform: scale(1.02);
+}
+
+.post-image {
+    width: 100%; /* Уменьшение размера изображения для мобильных устройств */
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px; /* Отступ снизу для мобильных устройств */
+}
+
+.post-content {
+    flex: 1;
+    padding: 10px;
+}
+
+.post-content h3 {
+    font-size: 1.9em;
+    margin: 0 0 10px 0;
+}
+
+.post-author, .post-date, .post-likes, .post-comments {
+    font-size: 1.4em;
+    margin: 5px 0;
+}
+
+.read-more {
+    display: block; /* Центрирование кнопки */
+    font-size: 1.4em;
+    color: white;
+    border-bottom: 1px solid #ff6f61;
+    transition: color 0.3s, border-bottom 0.3s;
+    background: linear-gradient(135deg, #ff1500, #ff8276);
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+    text-align: center; /* Выравнивание текста по центру */
+    margin-top: 15px; /* Отступ сверху для мобильных устройств */
+}
+
+.read-more:hover {
+    background: linear-gradient(135deg, #ff8276, #ff1500);
+    text-decoration: none;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 768px) {
+    .hero-text h2 {
+        font-size: 2em;
+    }
+
+    .hero-text p {
+        font-size: 1em;
+    }
+
+    .recent-posts-heading {
+        font-size: 1.6em;
+    }
+
+    .post-content h3 {
+        font-size: 1.2em;
+    }
+
+    .post-box {
+        flex-direction: column; /* Вертикальное размещение для мобильных устройств */
+    }
+
+    .post-image {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .read-more {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .icons {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-text p {
+        font-size: 0.9em;
+    }
+
+    .recent-posts-heading {
+        font-size: 1.4em;
+    }
+
+    .post-content h3 {
+        font-size: 1.3em;
+    }
+
+    .post-content p {
+        font-size: 0.9em;
+    }
+
+    .read-more {
+        font-size: 1em;
+        padding: 6px;
+        text-decoration: none;
+        border-radius: 10px;
+    }
+
+    .post-image {
+        max-height: 150px;
+    }
+}

@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой блог инфо</title>
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+</head>
+<body>
+    <header class="header-section">
+        <div class="hero-area">
+            <div class="icons">
+                <a href="https://www.instagram.com/saddam_webdesigner?igsh=MXc2MmUzNHhiNTZnNw==" class="social-icon instagram"></a>
+                <a href="https://www.facebook.com/profile.php?id=61556249160678&mibextid=kFxxJD" class="social-icon facebook"></a>
+                <a href="https://t.me/nasriev7oo7" class="social-icon telegram"></a>
+                <a href="https://wa.me/+992927924007" class="social-icon whatsapp"></a>
+            </div>
+            <div class="texts txts">
+                <h2>Добро пожаловать в IT блог</h2>
+                <p>Если есть вопросы, есть мнения, напишите всё в комментариях</p>
+                <p>Есть возможность поговорить в комментариях</p>
+            </div>
+            <a href='/' ><button class="home">Главная</button></a>
+            <h3 class="info-heading">Инфо о публикации:</h3>
+        </div>
+
+        <div class="post-detail">
+            <img src="{{ post.img.url }}" class="post-detail-image" alt="Пост">
+            <div class="post-detail-content">
+                <h3 class="post-title">{{ post.title }}</h3>
+                <p class="post-description">{{ post.description }}</p>
+                <p class="post-author">Автор: {{ post.author }}</p>
+                <p class="date-post">{{ post.date }}</p>
+                <hr class="hr"/>
+                <span class="like-count">Понравилось: {{ post.likes_set.all.count }}</span>
+                <span class="comment-count">Комментарии: {{ post.comments_set.all.count }}</span>
+                <div class="like-dislike">
+              
+                    <a href='{% url 'add_likes' post.id %}' class="like-button"><img src="{% static 'my_site1/image/like-svgrepo-com.svg' %}" alt="Нравится"></a>
+                    <a href='{% url 'del_likes' post.id %}' class="dislike-button" ><img src="{% static 'my_site1/image/dislike-svgrepo-com.svg' %}" alt="Не нравится"></a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="main">
+            <div class="form-comment">
+                <h3>Оставить комментарий</h3>
+                <form action='{% url 'add_comments' post.id %}' method='post'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="text_comment">Ваш комментарий</label>
+                        <textarea id="text_comment" name='text_comment'></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type='text' id="name" name='name'>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ваш Email *</label>
+                        <input type='email' id="email" name='email'>
+                    </div>
+                    <div class="form-group">
+                        <input type='submit' value="Отправить">
+                    </div>
+                </form>
+
+                <div class="comments">
+                    {% for comment in post.comments_set.all %}
+                    <div class='view-comment'>
+                        <h4>{{ comment.name }}:</h4>
+                        <p>{{ comment.text_comment }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <footer id="footer">
+        <p class="copy right">Copyright &copy; 2024</p>
+    </footer>
+
+</body>
+</html>

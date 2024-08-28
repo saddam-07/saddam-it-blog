@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type='text/css'>
+    <title>Мой блог</title>
+</head>
+<body>
+    <header>
+        <div class="hero-area">
+            <div class="hero-text">
+                <h2>Добро пожаловать в IT блог</h2>
+                <p>Публикация новостей о мире инновационных технологий</p>
+                <p>Возможность поговорить в комментариях</p>
+            </div>
+            <div class="icons">
+                <a href="https://www.instagram.com/saddam_webdesigner?igsh=MXc2MmUzNHhiNTZnNw==" class="social-icon instagram"></a>
+                <a href="https://www.facebook.com/profile.php?id=61556249160678&mibextid=kFxxJD" class="social-icon facebook"></a>
+                <a href="https://t.me/nasriev7oo7" class="social-icon telegram"></a>
+                <a href="https://wa.me/+992927924007" class="social-icon whatsapp"></a>
+            </div>
+        </div>
+        <h3 class="recent-posts-heading">Новейшие публикации:</h3>
+        {% for post in post_list %}
+        <div class="post-box">
+            <img src="{{ post.img.url }}" alt="" class="post-image">
+            <div class="post-content">
+                <h3>{{ post.title }}</h3>
+                <p class="post-author">Автор: {{ post.author }}</p>
+                <p class="post-date">Дата публикации: {{ post.date }}</p>
+                <p class="post-likes">Понравилось: {{ post.likes_set.all.count }}</p>
+                <p class="post-comments">Комментарии: {{ post.comments_set.all.count }}</p>
+                <a href="{{ post.id }}" class="read-more">Узнать больше &raquo;</a>
+            </div>
+        </div>
+        {% endfor %}
+    </header>
+</body>
+</html>
